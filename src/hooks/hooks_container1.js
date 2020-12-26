@@ -1,10 +1,13 @@
-import React, {useState,useEffect, useReducer} from 'react';
+import React, {useState,useEffect, useReducer, useContext} from 'react';
 
 import * as Reducer from '../store/reducers/hooks_reducer';
 import * as Actions from '../store/actions/actions'
+
+import Context from '../utils/context'
 //main app 
 const HooksContainer1 = () => {
 
+  const context = useContext(Context)
   const [stateValue, setValue] = useState(0)
   const [useEffectValue, setUseEffectValue] = useState(null)
 
@@ -50,6 +53,9 @@ const HooksContainer1 = () => {
 
       <button onClick= { () => handleDispatchTrue()}> Handle Dispatch True</button>
       <button onClick= { () => handleDispatchFalse()}> Handle Dispatchc False</button>
+
+      <button onClick = { () => context.incrementGlobalState() }> Increase Global State value</button>
+      <button onClick = { () => context.decrementGlobalState() }> Decrease Global State value</button>
       <br />
       {
         useEffectValue
@@ -63,7 +69,8 @@ const HooksContainer1 = () => {
         : <p>State is false</p>
       }
       <br />
-      Local State Valuable : {stateValue}
+      <p>Local State Valuable : {stateValue}</p>
+      <p>Global State Valuable : {context.valueGlobalState}</p>
     </div>
   )
 }
