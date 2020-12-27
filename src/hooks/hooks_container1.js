@@ -56,6 +56,9 @@ const HooksContainer1 = () => {
 
       <button onClick = { () => context.incrementGlobalState() }> Increase Global State value</button>
       <button onClick = { () => context.decrementGlobalState() }> Decrease Global State value</button>
+
+      <button onClick= { () => context.setGlobalStateTrue()}> Global Dispatch True</button>
+      <button onClick= { () => context.setGlobalStateFalse()}> Global Dispatchc False</button>
       <br />
       {
         useEffectValue
@@ -65,6 +68,12 @@ const HooksContainer1 = () => {
       <br />
       {
         state.stateprop1 
+        ? <p>State is true</p>
+        : <p>State is false</p>
+      }
+      <br />
+      {
+        context.renderGlobalState 
         ? <p>State is true</p>
         : <p>State is false</p>
       }
